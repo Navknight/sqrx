@@ -7,7 +7,6 @@ from dotenv import load_dotenv
 from flask_sock import Sock
 
 load_dotenv()
-IPGEOLOCATION = os.getenv('IPGEOLOCATION')
 WHOISAPI = os.getenv('WHOISAPI')
 app = Flask(__name__)
 sock = Sock(app)
@@ -48,6 +47,7 @@ def get_subdomains(url):
     return [record['domain'] for record in subdomain_info.get('result', {}).get('records', [])]
 
 def get_asset_domains(url):
+    url = "https://" + url if not url.startswith('http') else url
     response = requests.get(url)
     soup = BeautifulSoup(response.text, 'html.parser')
     return {
