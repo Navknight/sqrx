@@ -1,0 +1,25 @@
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    networks:
+      - my-network
+      - default
+    depends_on:
+      - responder1
+      - responder2
+  responder1:
+    build: ./responder
+    networks:
+      - my-network
+  responder2:
+    build: ./responder
+    networks:
+      - my-network
+networks:
+  my-network:
+    internal: true
+  
