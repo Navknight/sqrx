@@ -83,7 +83,7 @@ def insert_hyperlinks(data, visited, hyper):
                     c.execute('''INSERT INTO hyperlinks (host, link, frequency) 
                                  VALUES (?, ?, ?) 
                                  ON CONFLICT(host, link) 
-                                 DO UPDATE SET frequency = frequency + excluded.frequency''', 
+                                 DO UPDATE SET frequency = excluded.frequency''', 
                               (site, link, freq))
                     log(f"Inserted/Updated hyperlink: host={site}, link={link}, frequency={freq}")
 

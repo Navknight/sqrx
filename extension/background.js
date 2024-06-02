@@ -17,8 +17,8 @@ function onDisconnected() {
     port = null;
 }
 
-const sendToNative = () => {
-    chrome.storage.local.get(null, (items) => {
+const sendToNative = (host) => {
+    chrome.storage.local.get([host,'visited', 'hyperlinks'], (items) => {
         console.log(items)
         const visited = items.visited || 0
         const hyperlinks = items.hyperlinks || 0
@@ -43,7 +43,7 @@ const sendToNative = () => {
 
 chrome.runtime.onMessage.addListener((message, sender) => {
     if(message.action === 'update')
-        sendToNative();
+        sendToNative(message.host);
 })
 
 connect();
