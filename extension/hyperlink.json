@@ -1,0 +1,7 @@
+{
+    "name": "com.abhinav.hyperlink",
+    "description": "Track the hyperlinks in an SQLite DB",
+    "path": "C:\\Users\\abhig\\Github\\sqrx\\extension\\hyperlink.bat",
+    "type": "stdio",
+    "allowed_origins": ["chrome-extension://ifgieihnbkehhdopdmjaddoocejjccbn/"]
+}

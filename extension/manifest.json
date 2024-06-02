@@ -1,0 +1,27 @@
+{
+    "manifest_version": 3,
+    "name": "Hyperlink Tracker",
+    "version": "1.0",
+    "description": "This extension tracks the number of times different hyperlinks appears on a webpage.",
+    "permissions": [
+        "tabs",
+        "storage",
+        "scripting",
+        "nativeMessaging"
+    ],
+    "host_permissions" : [
+        "<all_urls>"
+    ],
+    "action" : {
+        "default_popup": "popup.html"
+    },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["content.js"]
+        }
+    ],
+    "background": {
+        "service_worker": "background.js"
+    }
+}
